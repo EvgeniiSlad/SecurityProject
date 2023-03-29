@@ -2,11 +2,9 @@ from django import forms
 from .models import *
 
 
-
-
-class AddShiftForm(forms.ModelForm):
+class EmployeeForm(forms.ModelForm):
+    
 
     class Meta:
-        model = Shift
+        model = Employee
         fields = ('__all__')
-

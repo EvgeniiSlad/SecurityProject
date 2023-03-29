@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} | Salary {% endblock %}
+
+{% block content %}
+<br>
+{{users}}
+<ul>
+    {% for user in users %}
+        <h2>{{ user.first_name }} {{ user.last_name }}:</h2>
+        {% for shift in user.shift_set.all %}
+            <h4>{{ shift.time_of_shift }}, {{ shift.data_time }} - {{ shift.time_of_shift.price }}₪</h4>
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+{% endblock content %}

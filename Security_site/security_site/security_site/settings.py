@@ -85,6 +85,9 @@ DATABASES = {
         'PASSWORD': 'popova129',
         'HOST': 'localhost',
         'PORT': '5432',
+        # 'OPTIONS': {
+        #     'options': '-c timezone=UTC',
+        # },
     }
 }
 
@@ -113,13 +116,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
-TIME_INPUT_FORMATS = ('%H:%M',)
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

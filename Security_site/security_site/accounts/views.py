@@ -58,7 +58,7 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 def logout(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         auth.logout(request)
         messages.success(request, 'You are now logged out')
-        return redirect('login')
+        return render(request,'accounts/login.html')

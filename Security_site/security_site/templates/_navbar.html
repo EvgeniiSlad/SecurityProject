@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
     <div class="container-fluid">
-      <a class="navbar-brand text-warning" href="{% url 'home'%}"><h1>O X P A H A</h1></a>
+      <a class="navbar-brand text-warning border border-warning px-3 " href="{% url 'home'%}"><h1> O X P A H A </h1></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,16 +11,18 @@
             {%if user.is_staff %}
             <li><a href="{% url 'add_user' %}" class="nav-link px-2 text-light"><h5>Add User</h5></a></li>
             <li><a href="{% url 'add_shifts' %}" class="nav-link px-2 text-light"><h5>Add shift</h5></a></li>
-            <li><a href="#" class="nav-link px-2 text-light"><h5>Hours and Money</h5></a></li>
+            <li><a href="{% url 'salary' %}" class="nav-link px-2 text-light"><h5>Hours and Salary</h5></a></li>
             {% endif %}
+            {% if not user.is_staff%}
             <li><a href="#" class="nav-link px-2 text-light"><h5>My shift</h5></a></li>
-            <li><a href="#" class="nav-link px-2 text-light">Profile</a></li>      
+            <li><a href="#" class="nav-link px-2 text-light">Profile</a></li>    
+            {%endif%}  
         </ul>
       </div>
 
       <div class="text-end">
         <button  type="button" class="btn btn-outline-light me-2"><a href="{% url 'login' %}" class="nav-link px-2 text-warning">Login</a></button>
-        <!-- <button  type="button" class="btn btn-outline-light me-2"><a href="{% url 'logout' %}" class="nav-link px-2 text-warning">Logout</a></button> -->
+        <button  type="button" class="btn btn-outline-light me-2"><a href="{% url 'logout' %}" class="nav-link px-2 text-warning">Logout</a></button>
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
             <li
@@ -30,7 +32,7 @@
               class="nav-item mr-3"
             {% endif %}
             >
-              <a class="nav-link text-light " href="{% url 'home' %}">
+              <a class="nav-link text-light " href="#">
                Welcome {{ user.first_name }} {{ user.last_name }}</a>
             </li>
           {% endif %}

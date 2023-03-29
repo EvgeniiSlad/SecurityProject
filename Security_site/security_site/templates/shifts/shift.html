@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{%block content%}
+    <div >
+        <div class="card-header bg-dark mw-100" style="height: 33vh;" >
+            <h2 class="text-warning">Name: {{shift.name.first_name}} {{shift.name.last_name}}</h2>
+            <h4 class="text-white">When: {{shift.data_time}}  On: {{shift.time_of_shift}}</h4>
+            <br>
+        </div>
+    </div>
+{%endblock%}

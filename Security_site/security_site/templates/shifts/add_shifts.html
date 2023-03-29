@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<!-- {%for shift in shifts%}
-    <h2>Name: {{shift.name.first_name}} {{shift.name.last_name}}</h2>
-    <h4>When: {{shift.data_time}}  On: {{shift.time_of_shift}}</h4>
-    <br>
-{%endfor%} -->
+
 <section id="register" class="bg-dark py-5" style="height: 100vh;">
     <div class="container">
       <div class="row">
@@ -15,20 +12,9 @@
                 <i class="fas fa-user-plus"></i> Add Shift</h4>
             </div>
             <div class="card-body text-warning">
-              <!-- Alerts -->
               <form  method="POST">{% csrf_token %}
                   <div class="form-group text-dark">
-                      <label>Username(Login of user)</label>
-                      <h3>{{form.name}}</h3>
-                    </div>
-                <div class="form-group text-dark">
-                  <label>When(Date)</label>
-                  <h3>{{form.data_time}}</h3>
-                </div>
-                <div class="form-group text-dark">
-                    <label>On(Time)</label>
-                    <h3>{{form.time_of_shift}}</h3>
-                  </div>             
+                    <h3>{{form.as_p}}</h3>
                 <input type="submit" value="Add" class="btn btn-warning btn-block">
               </form>
             </div>
