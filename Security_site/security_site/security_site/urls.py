@@ -11,9 +11,12 @@ urlpatterns = [
     path('',homepage, name='home'),
     path('login/',login, name='login'),
     path('logout/',logout, name='logout'),
+    path('profile/',profile_view,name='profile'),
     path('add_user/',add_user, name='add_user') ,
     path('add_shifts/',addShift.as_view(),name='add_shifts'),
     path('shifts/',ShiftsListView.as_view(),name='shifts'),
     path('shift/<int:pk>',ShiftDetalView.as_view(),name='shift'),
-    path('salary/',salary,name='salary')
+    path('shifts_for/',ShiftsForEmployeeListView.as_view(),name='shifts_for'),
+    path('salarys/',salarys,name='salarys'),
+    path('salary/<int:pk>',SalaryDetalView.as_view(),name='salary')
 ]

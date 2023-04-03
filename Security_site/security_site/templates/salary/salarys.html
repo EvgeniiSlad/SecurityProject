@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} | Salarys {% endblock %}
+
+{% block content %}
+<section class="bg-dark py-5" >
+    <ul>
+        {% for employee in employees %}
+            <a href="{%url 'salary' employee.id%}" class="link-warning"><h2 class="text-warning ">{{ employee.first_name }} {{ employee.last_name }}:</h2></a>
+            {% for shift in employee.shift_set.all %}
+                <h4 class="text-white">{{ shift.time_of_shift }}, {{ shift.data_time }} - {{ shift.time_of_shift.price }}₪</h4>
+            {% endfor %}
+        {% endfor %}
+    </ul> 
+</section>
+
+
+{% endblock content %}

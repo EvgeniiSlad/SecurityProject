@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
-
+from accounts.models import *
 # Create your views here.
 
 def homepage(request):
@@ -15,6 +15,7 @@ def add_user(request):
     last_name = request.POST['last_name']
     username = request.POST['username']
     email = request.POST['email']
+    phone_number = request.POST['phone_number']
     password = request.POST['password']
     password2 = request.POST['password2']
 
@@ -29,7 +30,7 @@ def add_user(request):
           messages.error(request, 'That email is being used')
           return redirect('add_user')
         else:
-          user = User.objects.create_user(username=username, password=password,email=email, first_name=first_name, last_name=last_name)
+          user = User.objects.create_user(username=username, password=password,email=email, first_name=first_name, last_name=last_name,phone_number=phone_number)
           user.save()
           messages.success(request, 'You are now registered and can log in')
           return redirect('login')
@@ -62,3 +63,11 @@ def logout(request):
         auth.logout(request)
         messages.success(request, 'You are now logged out')
         return render(request,'accounts/login.html')
+
+
+def profile_view(request):
+   employees = Employee.objects.all()
+   context = {
+      'employees': employees
+   }
+   return render(request,'accounts/profile.html',context)

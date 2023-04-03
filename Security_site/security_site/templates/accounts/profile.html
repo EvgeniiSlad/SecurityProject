@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} | Account Login {% endblock %}
+
+{% block content %}
+<div class="content-section bg-dark " style="height: 100vh;">
+    <div class="media">
+      <div class="media-body">
+        {% for employee in employees %}
+        {% if user.last_name == employee.last_name %}
+        <img src="{{employee.photo}}" height="250" width="200" />
+        <p><h1 class="account-heading text-white"><u class="text-warning">Full Name:</u> {{ employee.first_name }} {{ employee.last_name }}</h1> </p>
+        <p ><h2 class="text-white"><u class="text-warning">E-mail:</u> {{ employee.email }}</h2></p>
+        <p ><h2 class="text-white"><u class="text-warning">Phone number:</u> {{ employee.phone_number }}</h2></p>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+    <!-- FORM HERE -->
+  </div>
+  {% endblock %}

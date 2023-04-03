@@ -3,7 +3,6 @@ from .models import *
 from .forms import AddShiftForm
 from django.views.generic import  FormView, UpdateView, DeleteView, ListView ,DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 
 
@@ -19,6 +18,13 @@ class ShiftDetalView(DetailView):
     model = Shift
     context_object_name = 'shift'
 
+class ShiftsForEmployeeListView(LoginRequiredMixin,ListView):
+    template_name = 'shifts/shifts_for.html'
+    model = Shift
+    context_object_name = 'shifts_for'
+
+
+
 class addShift(LoginRequiredMixin,FormView):
     form_class = AddShiftForm
     template_name = 'shifts/add_shifts.html'
@@ -27,6 +33,8 @@ class addShift(LoginRequiredMixin,FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
     
 
 
