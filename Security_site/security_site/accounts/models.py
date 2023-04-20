@@ -4,12 +4,13 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.urls import reverse
 
+
 # Create your models here.
 
 class Employee(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    photo = models.ImageField(upload_to= 'photos/%Y/%m/%d/',default=None)
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d/',default=None)
     email = models.EmailField()
     phone_number = models.CharField(max_length=200)
     

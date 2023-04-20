@@ -2,9 +2,10 @@ from django.db import models
 from datetime import datetime
 from django.core.exceptions import ValidationError
 from django.forms.fields import DateField
-from accounts.models import Employee
 from django.db.models.functions import TruncDate
+from accounts.models import Employee
 # Create your models here.
+
 class TimeOfShift(models.Model):
     name = models.CharField(max_length=50,null=True)
     time = models.TimeField(validators=[ValidationError],null=True)

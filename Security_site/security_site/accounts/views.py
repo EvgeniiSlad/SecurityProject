@@ -2,10 +2,47 @@ from django.shortcuts import render,redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from accounts.models import *
+import requests
 # Create your views here.
 
+
 def homepage(request):
-    return render(request,'home.html')
+    api_url = 'https://api.open-meteo.com/v1/forecast'
+    params = {
+        'latitude': 32.08, 
+        'longitude': 34.78, 
+        'current_weather': 'true', 
+        'hourly': 'temperature_2m,relativehumidity_2m,windspeed_10m',
+    }
+    response = requests.get(api_url, params=params)
+
+    data = response.json()
+
+    if 'current_weather' in data:
+        current_weather = data['current_weather']
+    else:
+        current_weather = {}
+
+    current_temp = current_weather.get('temperature', 'N/A')
+    current_humidity = data.get('hourly', {}).get('relativehumidity_2m', [])[0]
+    current_wind_speed = current_weather.get('windspeed', 'N/A')
+
+    hourly_data = data.get('hourly', {})
+    hourly_times = hourly_data.get('time', [])
+    hourly_temperatures = hourly_data.get('temperature_2m', [])
+    hourly_humidities = hourly_data.get('relativehumidity_2m', [])
+    hourly_wind_speeds = hourly_data.get('windspeed_10m', [])
+
+    context = {
+        'current_temp': current_temp,
+        'current_humidity': int(current_humidity) if current_humidity else 'N/A',
+        'current_wind_speed': current_wind_speed,
+        'hourly_times': hourly_times,
+        'hourly_temperatures': hourly_temperatures,
+        'hourly_humidities': hourly_humidities,
+        'hourly_wind_speeds': hourly_wind_speeds,
+    }
+    return render(request, 'home.html', context)
 
 
 def add_user(request):

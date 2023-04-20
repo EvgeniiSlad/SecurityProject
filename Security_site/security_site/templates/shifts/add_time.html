@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section id="register" class="bg-dark py-5" style="height: 100vh;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-dark text-warning">
+              <h4>
+                <i class="fas fa-user-plus"></i> Add Shift</h4>
+            </div>
+            <div class="card-body text-warning">
+              <form  method="POST">{% csrf_token %}
+                  <div class="form-group text-dark">
+                    <h3>{{form.as_p}}</h3>
+                <input type="submit" value="Add" class="btn btn-warning btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

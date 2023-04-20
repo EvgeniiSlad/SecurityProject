@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {%block content%}
-    <div class="card-header bg-dark" style="height: 100vh;" >
-        {%for shift in shifts_for%}
-        {% if user.last_name == shift.name.last_name %}
+<div class="card-header bg-dark" style="height: 100vh;" >
+
+    {% for shift in shifts %}
         <div>
-            <h2 class="text-warning">Name: <u class="text-white">{{shift.name.first_name}} {{shift.name.last_name}}</u></h2>
-            <h4 class="text-warning">When: <u class="text-white">{{shift.data_time}}</u>  On: <u class="text-white">{{shift.time_of_shift}}</u></h4>
-            <h3 class="text-warning">Salary of shift: <u class="text-white">{{shift.time_of_shift.price}}₪</u></h3>
+            <h2 class="text-warning">When: <u class="text-white">{{ shift.data_time }}</u>  On: <u class="text-white">{{ shift.time_of_shift }}</u></h2>
+            <h3 class="text-warning">Salary of shift: <u class="text-white">{{ shift.time_of_shift.price }}₪</u></h3>
             <br>
         </div>
+        {% endfor %}
+        {% if sum_salary.total_salary %}
+        <h2 class="text-warning">Total Salary: <u class="text-white">{{ sum_salary.total_salary }}₪</u></h2>
         {% endif %}
-        {%endfor%}
-    </div>
+</div>
 {%endblock%}

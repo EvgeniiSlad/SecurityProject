@@ -4,6 +4,8 @@ from accounts.views import *
 from shifts.views import *
 from salary.views import*
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -16,7 +18,8 @@ urlpatterns = [
     path('add_shifts/',addShift.as_view(),name='add_shifts'),
     path('shifts/',ShiftsListView.as_view(),name='shifts'),
     path('shift/<int:pk>',ShiftDetalView.as_view(),name='shift'),
-    path('shifts_for/',ShiftsForEmployeeListView.as_view(),name='shifts_for'),
+    path('shifts_for/',count_shist,name='shifts_for'),
     path('salarys/',salarys,name='salarys'),
-    path('salary/<int:pk>',SalaryDetalView.as_view(),name='salary')
-]
+    path('salary/<int:pk>',SalaryDetalView.as_view(),name='salary'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

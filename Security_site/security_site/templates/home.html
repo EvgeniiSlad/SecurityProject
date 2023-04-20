@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
+
+
+
 {% block content %}
 <section class="bg-secondary py-5" style="height: 100vh;">
-    <h1 class="text-warning  py-5 text-center  ">Welcome to OXPAHA Secutiry site!</h1>
+    <h1 class="text-warning py-5 text-center">Welcome to OXPAHA Secutiry site!</h1>
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="card bg-dark">
+            <div class="card-body">
+                <h1 class="card-title text-warning">Weather is:</h1>
+                <ul class="list-unstyled">
+                    <li class="text-white"><h3>Temperature: <u class="text-warning">{{ current_temp }}&deg;C</u></h3></li>
+                    <li class="text-white"><h3>Humidity: <u class="text-warning">{{ current_humidity }}%</u></h3></li>
+                    <li class="text-white"><h3>Wind Speed: <u class="text-warning">{{ current_wind_speed }} km/h</u></h3></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock content %}

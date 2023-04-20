@@ -1,12 +1,36 @@
 {% extends 'base.html' %}
-{%block content%}
-    <div >
-        {%for shift in shifts%}
-        <div class="card-header bg-dark mw-100" style="height: 33vh;" >
-            <h2 class="text-warning">Name: {{shift.name.first_name}} {{shift.name.last_name}}</h2>
-            <h4 class="text-white">When: {{shift.data_time}}  On: {{shift.time_of_shift}}</h4>
-            <br>
-        </div>
-        {%endfor%}
-    </div>
-{%endblock%}
+
+{% block content %}
+  <div class="card-header bg-dark mw-100" style="height: 100vh;">
+    {% for shift in shifts %}
+      <div class="shift bg-dark">
+        <h2 class="text-warning">Name: {{ shift.name.first_name }} {{ shift.name.last_name }}</h2>
+        <h4 class="text-white">When: {{ shift.data_time }} On: {{ shift.time_of_shift }}</h4>
+      </div>
+    {% endfor %}
+  </div>
+
+  <style>
+    .shift {
+      display: inline-block;
+      width: calc(33.33% - 10px);
+      margin-right: 20px;
+      margin-bottom: 20px;
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    @media only screen and (max-width: 768px) {
+      .shift {
+        width: calc(50% - 10px);
+      }
+    }
+
+    @media only screen and (max-width: 576px) {
+      .shift {
+        width: 100%;
+      }
+    }
+  </style>
+{% endblock %}

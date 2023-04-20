@@ -11,6 +11,7 @@
             {%if user.is_staff %}
             <li><a href="{% url 'add_user' %}" class="nav-link px-2 text-light"><h5>Add User</h5></a></li>
             <li><a href="{% url 'add_shifts' %}" class="nav-link px-2 text-light"><h5>Add shift</h5></a></li>
+            <li><a href="{% url 'shifts' %}" class="nav-link px-2 text-light"><h5>All shift</h5></a></li>
             <li><a href="{% url 'salarys' %}" class="nav-link px-2 text-light"><h5>Hours and Salary</h5></a></li>
             {% endif %}
             {% if not user.is_staff%}
